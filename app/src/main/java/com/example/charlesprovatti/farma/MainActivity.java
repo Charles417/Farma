@@ -1,5 +1,6 @@
 package com.example.charlesprovatti.farma;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -43,10 +44,26 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.menu_config) {
-            return true;
+        if (id == R.id.menu_config)
+        {
+            Intent intent = new Intent(this, MenuActivity.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.menu_ajuda)
+        {
+            Intent intent = new Intent(this, MenuActivity.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.menu_sobre)
+        {
+            Intent intent = new Intent(this, MenuActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
+
     }
+
+
+
 }
