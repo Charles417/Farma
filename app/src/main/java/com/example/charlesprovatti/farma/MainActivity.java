@@ -71,17 +71,19 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.menu_config)
         {
-            Intent intent = new Intent(this, MenuActivity.class);
+            Intent intent = new Intent(this, ConfiguracoesActivity.class);
             startActivity(intent);
         }
         else if (id == R.id.menu_ajuda)
         {
             Intent intent = new Intent(this, MenuActivity.class);
+            intent.putExtra("tipo","Fale conosco: farmaconsulta@gmail.com");
             startActivity(intent);
         }
         else if (id == R.id.menu_sobre)
         {
             Intent intent = new Intent(this, MenuActivity.class);
+            intent.putExtra("tipo","Aplicativo em desenvolvimento.");
             startActivity(intent);
         }
 
