@@ -3,12 +3,21 @@ package com.example.charlesprovatti.farma.Farma;
 public class Produto
 {
 
+    private String id;
     private String nome;
     private String descricao;
     private String fabricante;
     private Double preco;
 
     public Produto() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNome() {

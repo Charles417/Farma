@@ -35,6 +35,7 @@
         app:srcCompat="@android:drawable/ic_menu_search" />
 
     <ListView
+        android:id="@+id/listProduto"
         android:layout_width="368dp"
         android:layout_height="427dp"
         android:layout_marginStart="16dp"
