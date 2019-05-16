@@ -3,6 +3,7 @@ package com.example.charlesprovatti.farma.Farma;
 public class Produto
 {
 
+    private String imagem;
     private String uid;
     private String nome;
     private String fabricante;
@@ -10,6 +11,14 @@ public class Produto
     private Double preco;
 
     public Produto() {
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 
     public String getUid() {

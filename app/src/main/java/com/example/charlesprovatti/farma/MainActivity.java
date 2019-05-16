@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.charlesprovatti.farma.Adapter.Adapter;
 import com.example.charlesprovatti.farma.Farma.Produto;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -95,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
     {
         FirebaseApp.initializeApp(MainActivity.this);
         firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseDatabase.setPersistenceEnabled(true);
         databaseReference = firebaseDatabase.getReference();
     }
 
@@ -112,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                     listaProduto.add(produto);
                 }
 
-                arrayAdapterProduto = new ArrayAdapter<Produto>(MainActivity.this, R.layout.layout_lista, R.id.tvLista, listaProduto);
+                arrayAdapterProduto = new Adapter(MainActivity.this, (ArrayList<Produto>)listaProduto);
                 listView.setAdapter(arrayAdapterProduto);
 
             }
