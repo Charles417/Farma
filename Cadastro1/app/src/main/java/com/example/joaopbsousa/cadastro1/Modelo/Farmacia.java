@@ -7,8 +7,18 @@ public class Farmacia {
     private String endereco;
     private Double telefone;
     private Double cep;
+    private String uid;
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 
     public Farmacia() {
+
     }
 
     public Double getCnpj() {
@@ -59,6 +69,7 @@ public class Farmacia {
                 ", endereco='" + endereco + '\'' +
                 ", telefone=" + telefone +
                 ", cep=" + cep +
+                ", uid='" + uid + '\'' +
                 '}';
     }
 }

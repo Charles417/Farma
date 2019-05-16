@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">Cadastro1</string>
     <string name="cadastrar">Cadastrar</string>
+    <string name="nome_produto">Produto</string>
+    <string name="endereco">Endereco</string>
+    <string name="telefone">Telefone</string>
+    <string name="cep">Cep</string>
+    <string name="cnpj">Cnpj</string>
+    <string name="nome_farmacia">Farmácia</string>
+    <string name="descricao_produto">Descrição</string>
+    <string name="fabricante">Fabricante</string>
+    <string name="preco">Preço</string>
+    <string name="Imagem">Imagem</string>
 </resources>

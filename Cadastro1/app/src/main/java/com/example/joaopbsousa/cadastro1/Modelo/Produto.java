@@ -6,8 +6,27 @@ public class Produto {
     private Double preco;
     private String descricao;
     private String fabricante;
+    private String uid;
+    private String imagem;
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 
     public Produto() {
+
     }
 
     public String getNome() {
@@ -49,6 +68,8 @@ public class Produto {
                 ", preco=" + preco +
                 ", descricao='" + descricao + '\'' +
                 ", fabricante='" + fabricante + '\'' +
+                ", uid='" + uid + '\'' +
+                ", imagem='" + imagem + '\'' +
                 '}';
     }
 }
