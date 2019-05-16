@@ -10,9 +10,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.charlesprovatti.farma.Adapter.Adapter;
 import com.example.charlesprovatti.farma.Farma.Produto;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -71,17 +73,19 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.menu_config)
         {
-            Intent intent = new Intent(this, MenuActivity.class);
+            Intent intent = new Intent(this, ConfiguracoesActivity.class);
             startActivity(intent);
         }
         else if (id == R.id.menu_ajuda)
         {
             Intent intent = new Intent(this, MenuActivity.class);
+            intent.putExtra("tipo","Fale conosco: farmaconsulta@gmail.com");
             startActivity(intent);
         }
         else if (id == R.id.menu_sobre)
         {
             Intent intent = new Intent(this, MenuActivity.class);
+            intent.putExtra("tipo","Aplicativo em desenvolvimento.");
             startActivity(intent);
         }
 
@@ -110,8 +114,22 @@ public class MainActivity extends AppCompatActivity {
                     listaProduto.add(produto);
                 }
 
-                arrayAdapterProduto = new ArrayAdapter<Produto>(MainActivity.this, R.layout.layout_lista, R.id.tvLista, listaProduto);
+                arrayAdapterProduto = new Adapter(MainActivity.this, (ArrayList<Produto>)listaProduto);
                 listView.setAdapter(arrayAdapterProduto);
+
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                     Produto produtoSelecionado = (Produto)parent.getItemAtPosition(position);
+                     Intent intent = new Intent(MainActivity.this, ProdutoActivity.class);
+                     intent.putExtra("imagem", produtoSelecionado.getImagem());
+                     intent.putExtra("nome", produtoSelecionado.getNome());
+                     intent.putExtra("fabricante", produtoSelecionado.getFabricante());
+                     intent.putExtra("descricao", produtoSelecionado.getDescricao());
+                     intent.putExtra("preco", produtoSelecionado.getPreco());
+                     startActivity(intent);
+                    }
+                });
 
             }
 

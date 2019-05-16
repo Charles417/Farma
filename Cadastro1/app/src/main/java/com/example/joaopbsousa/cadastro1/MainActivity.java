@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        //Intent intent = new Intent(MainActivity.this, FarmaciaActivity.class);
+        //startActivity(intent);
     }
 
     public void conectarBanco()
@@ -45,3 +47,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+
+}
+
+
