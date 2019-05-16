@@ -3,6 +3,7 @@ package com.example.joaopbsousa.cadastro1;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
@@ -20,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        Intent intent = new Intent(MainActivity.this, FarmaciaActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(MainActivity.this, FarmaciaActivity.class);
+        //startActivity(intent);
     }
 
     public void conectarBanco()
@@ -30,4 +31,16 @@ public class MainActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
     }
+    public void produto (View view){
+        Intent intent = new Intent(this, ProdutoActivity.class);
+        startActivity(intent);
+    }
+    public void farmacia(View view){
+        Intent intent = new Intent(this, FarmaciaActivity.class);
+        startActivity(intent);
+
+    }
+
 }
+
+
