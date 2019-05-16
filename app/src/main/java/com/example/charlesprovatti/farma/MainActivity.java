@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -115,6 +116,20 @@ public class MainActivity extends AppCompatActivity {
 
                 arrayAdapterProduto = new Adapter(MainActivity.this, (ArrayList<Produto>)listaProduto);
                 listView.setAdapter(arrayAdapterProduto);
+
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                     Produto produtoSelecionado = (Produto)parent.getItemAtPosition(position);
+                     Intent intent = new Intent(MainActivity.this, ProdutoActivity.class);
+                     intent.putExtra("imagem", produtoSelecionado.getImagem());
+                     intent.putExtra("nome", produtoSelecionado.getNome());
+                     intent.putExtra("fabricante", produtoSelecionado.getFabricante());
+                     intent.putExtra("descricao", produtoSelecionado.getDescricao());
+                     intent.putExtra("preco", produtoSelecionado.getPreco());
+                     startActivity(intent);
+                    }
+                });
 
             }
 
