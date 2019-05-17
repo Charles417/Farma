@@ -1,10 +1,9 @@
 package com.example.charlesprovatti.farma;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -12,7 +11,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.charlesprovatti.farma.Adapter.Adapter;
 import com.example.charlesprovatti.farma.Farma.Produto;
@@ -27,6 +28,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Produto produto;
+    TextView textView;
+    ImageView imageView;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -46,14 +51,6 @@ public class MainActivity extends AppCompatActivity {
         conectarBanco();
         eventoBanco();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     @Override
@@ -93,6 +90,22 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    public void pesquisaProduto (View view)
+    {
+        produto = new Produto();
+
+        imageView = findViewById(R.id.imageProduto);
+        imageView.setImageURI(Uri.parse(produto.getImagem()));
+        textView = findViewById(R.id.tvNome);
+        textView.setText(produto.getNome());
+        textView = findViewById(R.id.tvFabricante);
+        textView.setText(produto.getFabricante());
+
+
+
+    }
+
     public void conectarBanco()
     {
         FirebaseApp.initializeApp(MainActivity.this);
@@ -102,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void eventoBanco()
     {
-        databaseReference.child("Produto").addValueEventListener(new ValueEventListener()
+        databaseReference.child("produto").addValueEventListener(new ValueEventListener()
         {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
