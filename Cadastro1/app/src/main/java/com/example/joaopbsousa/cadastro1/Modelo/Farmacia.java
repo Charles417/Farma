@@ -7,14 +7,14 @@ public class Farmacia {
     private String endereco;
     private Double telefone;
     private Double cep;
-    private String uid;
+    private String uidfarmacia;
 
-    public String getUid() {
-        return uid;
+    public String getUidfarmacia() {
+        return uidfarmacia;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setUidfarmacia(String uidfarmacia) {
+        this.uidfarmacia = uidfarmacia;
     }
 
     public Farmacia() {
@@ -69,7 +69,7 @@ public class Farmacia {
                 ", endereco='" + endereco + '\'' +
                 ", telefone=" + telefone +
                 ", cep=" + cep +
-                ", uid='" + uid + '\'' +
+                ", uidfarmacia='" + uidfarmacia + '\'' +
                 '}';
     }
 }

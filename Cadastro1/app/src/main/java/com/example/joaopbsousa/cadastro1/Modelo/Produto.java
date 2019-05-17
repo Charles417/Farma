@@ -6,8 +6,26 @@ public class Produto {
     private Double preco;
     private String descricao;
     private String fabricante;
-    private String uid;
+    private String uidproduto;
     private String imagem;
+    private String Farmacia;
+
+    public String getUidproduto() {
+        return uidproduto;
+    }
+
+    public void setUidproduto(String uidproduto) {
+        this.uidproduto = uidproduto;
+    }
+
+    public String getFarmacia() {
+        return Farmacia;
+
+    }
+
+    public void setFarmacia(String farmacia) {
+        Farmacia = farmacia;
+    }
 
     public String getImagem() {
         return imagem;
@@ -15,14 +33,6 @@ public class Produto {
 
     public void setImagem(String imagem) {
         this.imagem = imagem;
-    }
-
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
     }
 
     public Produto() {
@@ -68,8 +78,9 @@ public class Produto {
                 ", preco=" + preco +
                 ", descricao='" + descricao + '\'' +
                 ", fabricante='" + fabricante + '\'' +
-                ", uid='" + uid + '\'' +
+                ", uidproduto='" + uidproduto + '\'' +
                 ", imagem='" + imagem + '\'' +
+                ", Farmacia='" + Farmacia + '\'' +
                 '}';
     }
 }

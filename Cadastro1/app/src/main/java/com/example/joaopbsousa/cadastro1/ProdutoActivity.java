@@ -20,6 +20,7 @@ public class ProdutoActivity extends AppCompatActivity {
     EditText editTextDescricao;
     EditText editTextFabricante;
     EditText editTextImagem;
+    EditText editTextFarmacia;
     private Produto produto;
 
     FirebaseDatabase firebaseDatabase;
@@ -35,6 +36,7 @@ public class ProdutoActivity extends AppCompatActivity {
        editTextDescricao = findViewById(R.id.txtDescricao);
        editTextFabricante = findViewById(R.id.txtFabricante);
        editTextImagem = findViewById(R.id.txtImagem);
+       editTextFarmacia= findViewById(R.id.txtFarmacia);
        conectarBanco();
     }
 
@@ -49,13 +51,14 @@ public class ProdutoActivity extends AppCompatActivity {
     public void Cadastrar(View view)
     {
         Produto produto = new Produto();
-        produto.setUid(UUID.randomUUID().toString());
+        produto.setUidproduto(UUID.randomUUID().toString());
         produto.setNome(editTextNome.getText().toString());
         produto.setPreco(Double.parseDouble(editTextPreco.getText().toString()));
         produto.setDescricao(editTextDescricao.getText().toString());
         produto.setFabricante(editTextFabricante.getText().toString());
         produto.setImagem(editTextImagem.getText().toString());
-        databaseReference.child("produto").child(produto.getUid()).setValue(produto);
+        produto.setFarmacia(editTextFarmacia.getText().toString());
+        databaseReference.child("produto").child(produto.getUidproduto()).setValue(produto);
         finish();
     }
 

@@ -31,7 +31,7 @@ public class FarmaciaActivity extends AppCompatActivity {
 
         editTextNome = findViewById(R.id.txtNomeFarmacia);
         editTextTelefone = findViewById(R.id.txtTelefone);
-        editTextEndereco = findViewById(R.id.txtTelefone);
+        editTextEndereco = findViewById(R.id.txtEndereco);
         editTextCnpj = findViewById(R.id.txtCpnj);
         editTextCep = findViewById(R.id.txtCep);
         conectarBanco();
@@ -48,13 +48,13 @@ public class FarmaciaActivity extends AppCompatActivity {
     public void Cadastrar(View view)
     {
         Farmacia farmacia = new Farmacia();
-        farmacia.setUid(UUID.randomUUID().toString());
+        farmacia.setUidfarmacia(UUID.randomUUID().toString());
         farmacia.setNome(editTextNome.getText().toString());
         farmacia.setEndereco(editTextEndereco.getText().toString());
         farmacia.setTelefone(Double.parseDouble(editTextTelefone.getText().toString()));
         farmacia.setCnpj(Double.parseDouble(editTextCnpj.getText().toString()));
         farmacia.setCep(Double.parseDouble(editTextCep.getText().toString()));
-        databaseReference.child("farmacia").child(farmacia.getUid()).setValue(farmacia);
+        databaseReference.child("farmacia").child(farmacia.getUidfarmacia()).setValue(farmacia);
         finish();
     }
 }

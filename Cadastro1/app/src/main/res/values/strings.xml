@@ -9,6 +9,10 @@
     <string name="nome_farmacia">Farmácia</string>
     <string name="descricao_produto">Descrição</string>
     <string name="fabricante">Fabricante</string>
-    <string name="preco">Preço</string>
+    <string name="preco_produto">Preço Produto</string>
     <string name="Imagem">Imagem</string>
+    <string name="Farmacia">Farmácia</string>
+    <string name="uid_farmacia">Uid_Farmácia</string>
+    <string name="uid_produto">Uid_Produto</string>
+    <string name="preco">Preço</string>
 </resources>
