@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.joaopbsousa.cadastro1.Modelo.FarmaProduto;
 import com.example.joaopbsousa.cadastro1.Modelo.Produto;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,7 +28,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
+    public void farmaproduto (View view){
+        Intent intent = new Intent (this, FarmaProdutoActivity.class);
+        startActivity(intent);
+    }
 
 }
 
