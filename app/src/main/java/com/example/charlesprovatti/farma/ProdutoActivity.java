@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.charlesprovatti.farma.Farma.Imagem;
 import com.example.charlesprovatti.farma.Farma.Produto;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
@@ -32,13 +33,20 @@ public class ProdutoActivity extends AppCompatActivity {
         produto.setNome(this.getIntent().getStringExtra("nome"));
         produto.setFabricante(this.getIntent().getStringExtra("fabricante"));
         produto.setDescricao(this.getIntent().getStringExtra("descricao"));
-        produto.setPreco(Double.parseDouble(this.getIntent().getStringExtra("preco")));
+        //produto.setPreco(Double.parseDouble(this.getIntent().getStringExtra("preco")));
 
-        imageView = findViewById(R.id.imageProduto);
+        imageView = findViewById(R.id.imgProduto);
         textNome = findViewById(R.id.txtNome);
         textFabricante = findViewById(R.id.txtFabricante);
         textDescricao = findViewById(R.id.txtDescricao);
         textPrecos = findViewById(R.id.txtPrecos);
+
+        new Imagem.DownloadImageFromInternet(imageView).execute(produto.getImagem());
+        textNome.setText(produto.getNome());
+        textFabricante.setText(produto.getFabricante());
+        textDescricao.setText(produto.getDescricao());
+        //textPrecos.setText(produto.getPreco().toString());
+
         conectaBanco();
 
     }
