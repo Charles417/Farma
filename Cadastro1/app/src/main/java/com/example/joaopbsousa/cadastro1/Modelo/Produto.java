@@ -3,12 +3,11 @@ package com.example.joaopbsousa.cadastro1.Modelo;
 public class Produto {
 
     private String nome;
-    private Double preco;
     private String descricao;
     private String fabricante;
     private String uidproduto;
     private String imagem;
-    private String Farmacia;
+
 
     public String getUidproduto() {
         return uidproduto;
@@ -18,14 +17,6 @@ public class Produto {
         this.uidproduto = uidproduto;
     }
 
-    public String getFarmacia() {
-        return Farmacia;
-
-    }
-
-    public void setFarmacia(String farmacia) {
-        Farmacia = farmacia;
-    }
 
     public String getImagem() {
         return imagem;
@@ -47,13 +38,6 @@ public class Produto {
         this.nome = nome;
     }
 
-    public Double getPreco() {
-        return preco;
-    }
-
-    public void setPreco(Double preco) {
-        this.preco = preco;
-    }
 
     public String getDescricao() {
         return descricao;
@@ -75,12 +59,10 @@ public class Produto {
     public String toString() {
         return "Produto{" +
                 "nome='" + nome + '\'' +
-                ", preco=" + preco +
                 ", descricao='" + descricao + '\'' +
                 ", fabricante='" + fabricante + '\'' +
                 ", uidproduto='" + uidproduto + '\'' +
                 ", imagem='" + imagem + '\'' +
-                ", Farmacia='" + Farmacia + '\'' +
                 '}';
     }
 }

@@ -17,6 +17,7 @@ public class FarmaProdutoActivity extends AppCompatActivity {
     EditText editTextuidfarmacia;
     EditText editTextuidproduto;
     EditText editTextprecofp;
+    EditText editTextfarmacia;
     private FarmaProduto farmaProduto;
 
     FirebaseDatabase firebaseDatabase;
@@ -30,6 +31,7 @@ public class FarmaProdutoActivity extends AppCompatActivity {
         editTextuidfarmacia = findViewById(R.id.txtUidFarmacia);
         editTextuidproduto = findViewById(R.id.txtUidProduto);
         editTextprecofp = findViewById(R.id.txtPrecoFP);
+        editTextfarmacia = findViewById(R.id.txtFarmacia);
         conectarBanco();
 
     }
@@ -47,6 +49,7 @@ public class FarmaProdutoActivity extends AppCompatActivity {
         farmaProduto.setUidfarmacia(editTextuidfarmacia.getText().toString());
         farmaProduto.setUidproduto(editTextuidproduto.getText().toString());
         farmaProduto.setPreco(Double.parseDouble(editTextprecofp.getText().toString()));
+        farmaProduto.setFarmacia(editTextfarmacia.getText().toString());
         databaseReference.child("farmaproduto").child(farmaProduto.getUidfarmacia()+farmaProduto.getUidproduto()).setValue(farmaProduto);
         finish();
     }
