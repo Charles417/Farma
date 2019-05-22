@@ -16,11 +16,9 @@ import java.util.UUID;
 public class ProdutoActivity extends AppCompatActivity {
 
     EditText editTextNome;
-    EditText editTextPreco;
     EditText editTextDescricao;
     EditText editTextFabricante;
     EditText editTextImagem;
-    EditText editTextFarmacia;
     private Produto produto;
 
     FirebaseDatabase firebaseDatabase;
@@ -32,11 +30,9 @@ public class ProdutoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_produto);
 
        editTextNome = findViewById(R.id.txtNomeProduto);
-       editTextPreco = findViewById(R.id.txtPreco);
        editTextDescricao = findViewById(R.id.txtDescricao);
        editTextFabricante = findViewById(R.id.txtFabricante);
        editTextImagem = findViewById(R.id.txtImagem);
-       editTextFarmacia= findViewById(R.id.txtFarmacia);
        conectarBanco();
     }
 
@@ -53,11 +49,9 @@ public class ProdutoActivity extends AppCompatActivity {
         Produto produto = new Produto();
         produto.setUidproduto(UUID.randomUUID().toString());
         produto.setNome(editTextNome.getText().toString());
-        produto.setPreco(Double.parseDouble(editTextPreco.getText().toString()));
         produto.setDescricao(editTextDescricao.getText().toString());
         produto.setFabricante(editTextFabricante.getText().toString());
         produto.setImagem(editTextImagem.getText().toString());
-        produto.setFarmacia(editTextFarmacia.getText().toString());
         databaseReference.child("produto").child(produto.getUidproduto()).setValue(produto);
         finish();
     }

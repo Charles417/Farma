@@ -5,6 +5,15 @@ public class FarmaProduto {
     private String uidfarmacia;
     private String uidproduto;
     private Double preco;
+    private String farmacia;
+
+    public String getFarmacia() {
+        return farmacia;
+    }
+
+    public void setFarmacia(String farmacia) {
+        this.farmacia = farmacia;
+    }
 
     public String getUidfarmacia() {
         return uidfarmacia;
@@ -40,6 +49,7 @@ public class FarmaProduto {
                 "uidfarmacia='" + uidfarmacia + '\'' +
                 ", uidproduto='" + uidproduto + '\'' +
                 ", preco=" + preco +
+                ", farmacia='" + farmacia + '\'' +
                 '}';
     }
 }
