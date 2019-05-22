@@ -47,7 +47,7 @@ public class FarmaProdutoActivity extends AppCompatActivity {
         farmaProduto.setUidfarmacia(editTextuidfarmacia.getText().toString());
         farmaProduto.setUidproduto(editTextuidproduto.getText().toString());
         farmaProduto.setPreco(Double.parseDouble(editTextprecofp.getText().toString()));
-        databaseReference.child("farmaproduto").child(farmaProduto.getUidfarmacia()).setValue(farmaProduto);
+        databaseReference.child("farmaproduto").child(farmaProduto.getUidfarmacia()+farmaProduto.getUidproduto()).setValue(farmaProduto);
         finish();
     }
 }
