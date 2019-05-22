@@ -1,7 +1,6 @@
 package com.example.charlesprovatti.farma;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -11,9 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.charlesprovatti.farma.Adapter.Adapter;
 import com.example.charlesprovatti.farma.Farma.Produto;
@@ -29,13 +27,10 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Produto produto;
-    TextView textView;
-    ImageView imageView;
-
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
+    private EditText editText;
     private ListView listView;
     private List<Produto> listaProduto = new ArrayList<Produto>();
     private ArrayAdapter<Produto> arrayAdapterProduto;
@@ -93,17 +88,48 @@ public class MainActivity extends AppCompatActivity {
 
     public void pesquisaProduto (View view)
     {
-        produto = new Produto();
+        editText = findViewById(R.id.etPesquisa);
 
-        imageView = findViewById(R.id.imageProduto);
-        imageView.setImageURI(Uri.parse(produto.getImagem()));
-        textView = findViewById(R.id.tvNome);
-        textView.setText(produto.getNome());
-        textView = findViewById(R.id.tvFabricante);
-        textView.setText(produto.getFabricante());
+        if (editText.getText().toString().equals(""))
+        {
+            eventoBanco();
+        }
+        else {
 
+            databaseReference.child("produto").orderByChild("nome").equalTo(editText.getText().toString()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    listaProduto.clear();
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Produto produto = snapshot.getValue(Produto.class);
+                        listaProduto.add(produto);
+                    }
 
+                    arrayAdapterProduto = new Adapter(MainActivity.this, (ArrayList<Produto>) listaProduto);
+                    listView.setAdapter(arrayAdapterProduto);
 
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Produto produtoSelecionado = (Produto) parent.getItemAtPosition(position);
+                            Intent intent = new Intent(MainActivity.this, ProdutoActivity.class);
+                            intent.putExtra("imagem", produtoSelecionado.getImagem());
+                            intent.putExtra("nome", produtoSelecionado.getNome());
+                            intent.putExtra("fabricante", produtoSelecionado.getFabricante());
+                            intent.putExtra("descricao", produtoSelecionado.getDescricao());
+                            intent.putExtra("preco", produtoSelecionado.getPreco().toString());
+                            startActivity(intent);
+                        }
+                    });
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
     }
 
     public void conectarBanco()
@@ -139,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
                      intent.putExtra("nome", produtoSelecionado.getNome());
                      intent.putExtra("fabricante", produtoSelecionado.getFabricante());
                      intent.putExtra("descricao", produtoSelecionado.getDescricao());
-                     intent.putExtra("preco", produtoSelecionado.getPreco());
+                     //intent.putExtra("preco", produtoSelecionado.getPreco().toString());
                      startActivity(intent);
                     }
                 });
@@ -153,5 +179,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 }
