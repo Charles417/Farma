@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                             intent.putExtra("nome", produtoSelecionado.getNome());
                             intent.putExtra("fabricante", produtoSelecionado.getFabricante());
                             intent.putExtra("descricao", produtoSelecionado.getDescricao());
-                            intent.putExtra("preco", produtoSelecionado.getPreco().toString());
+                            intent.putExtra("uidproduto", produtoSelecionado.getUidproduto());
                             startActivity(intent);
                         }
                     });
@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
                      intent.putExtra("nome", produtoSelecionado.getNome());
                      intent.putExtra("fabricante", produtoSelecionado.getFabricante());
                      intent.putExtra("descricao", produtoSelecionado.getDescricao());
-                     //intent.putExtra("preco", produtoSelecionado.getPreco().toString());
+                     intent.putExtra("uidproduto", produtoSelecionado.getUidproduto());
                      startActivity(intent);
                     }
                 });

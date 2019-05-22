@@ -4,11 +4,10 @@ public class Produto
 {
 
     private String imagem;
-    private String uid;
+    private String uidproduto;
     private String nome;
     private String fabricante;
     private String descricao;
-    private Double preco;
 
     public Produto() {
     }
@@ -21,12 +20,12 @@ public class Produto
         this.imagem = imagem;
     }
 
-    public String getUid() {
-        return uid;
+    public String getUidproduto() {
+        return uidproduto;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setUidproduto(String uidproduto) {
+        this.uidproduto = uidproduto;
     }
 
     public String getNome() {
@@ -53,9 +52,4 @@ public class Produto
         this.descricao = descricao;
     }
 
-    public Double getPreco() {
-        return preco;
-    }
-
-    public void setPreco(Double preco) {this.preco = preco;}
 }
