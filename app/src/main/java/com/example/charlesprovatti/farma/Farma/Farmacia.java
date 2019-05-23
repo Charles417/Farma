@@ -9,6 +9,7 @@ public class Farmacia
     private String endereco;
     private String telefone;
     private String cep;
+    private Double preco;
 
 
     public Farmacia() {
@@ -60,5 +61,13 @@ public class Farmacia
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public Double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(Double preco) {
+        this.preco = preco;
     }
 }
