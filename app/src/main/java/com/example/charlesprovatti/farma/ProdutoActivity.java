@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.charlesprovatti.farma.Farma.Farmacia;
+import com.example.charlesprovatti.farma.Farma.FarmaProduto;
 import com.example.charlesprovatti.farma.Farma.Imagem;
 import com.example.charlesprovatti.farma.Farma.Produto;
 import com.google.firebase.FirebaseApp;
@@ -21,16 +21,14 @@ import java.util.ArrayList;
 
 public class ProdutoActivity extends AppCompatActivity {
 
-    public  ArrayList<Produto> listaProduto = new ArrayList<Produto>();
+    public  ArrayList<FarmaProduto> listaPrecos = new ArrayList<FarmaProduto>();
     LinearLayout layoutLinear;
 
     ImageView imageView;
     TextView textNome;
     TextView textFabricante;
     TextView textDescricao;
-    TextView textPrecos;
     private Produto produto;
-    private TextView textView;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -45,7 +43,6 @@ public class ProdutoActivity extends AppCompatActivity {
         produto.setNome(this.getIntent().getStringExtra("nome"));
         produto.setFabricante(this.getIntent().getStringExtra("fabricante"));
         produto.setDescricao(this.getIntent().getStringExtra("descricao"));
-        produto.setUidproduto((this.getIntent().getStringExtra("uidproduto")));
 
         imageView = findViewById(R.id.imgProduto);
         textNome = findViewById(R.id.txtNome);
@@ -56,10 +53,10 @@ public class ProdutoActivity extends AppCompatActivity {
         textNome.setText(produto.getNome());
         textFabricante.setText(produto.getFabricante());
         textDescricao.setText(produto.getDescricao());
-        textPrecos.setText(produto.getUidproduto());
 
         conectaBanco();
-        pesquisaPreco();
+        //pesquisaPreco();
+        listaFarmaPreco(listaPrecos);
 
     }
 
@@ -70,15 +67,15 @@ public class ProdutoActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
     }
 
-    public void pesquisaPreco()
+    /*public void pesquisaPreco()
     {
-        databaseReference.child("farmaproduto").orderByChild("uidproduto").equalTo(textView.getText().toString()).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("farmaproduto").orderByChild("uidfarmaproduto").equalTo(layoutLinear.toString()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                listaProduto.clear();
+                listaPrecos.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Produto produto = snapshot.getValue(Produto.class);
-                    listaProduto.add(produto);
+                    FarmaProduto farmaProduto = snapshot.getValue(FarmaProduto.class);
+                    listaPrecos.add(farmaProduto);
                 }
             }
 
@@ -87,18 +84,21 @@ public class ProdutoActivity extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
 
-    public void listaFarmaPreco(ArrayList<Farmacia> lista)
+    public void listaFarmaPreco(ArrayList<FarmaProduto> lista)
     {
         layoutLinear = findViewById(R.id.lVertical);
         for (int i = 0; i < lista.size(); i++)
         {
-        TextView textViewFarma = new TextView(this);
-        TextView textViewPreco = new TextView(this);
+            TextView textViewFarma = new TextView(this);
+            TextView textViewPreco = new TextView(this);
 
-        textViewFarma.setText(lista.get(i).getNome());
-        //textViewPreco.setText(lista.get(i).getPreco());
+            textViewFarma.setText(lista.get(i).getNomefarmacia());
+            textViewPreco.setText(lista.get(i).getPreco().toString());
+
+            layoutLinear.addView(textViewFarma);
+            layoutLinear.addView(textViewPreco);
         }
     }
 }
