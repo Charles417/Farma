@@ -5,7 +5,7 @@ public class FarmaProduto {
     private String uidfarmaproduto;
     private String uidproduto;
     private String uidfarmacia;
-    private String nomefarmacia;
+    private String farmacia;
     private Double preco;
 
     public String getUidfarmaproduto() {
@@ -32,12 +32,12 @@ public class FarmaProduto {
         this.uidfarmacia = uidfarmacia;
     }
 
-    public String getNomefarmacia() {
-        return nomefarmacia;
+    public String getFarmacia() {
+        return farmacia;
     }
 
-    public void setNomefarmacia(String nomefarmacia) {
-        this.nomefarmacia = nomefarmacia;
+    public void setFarmacia(String farmacia) {
+        this.farmacia = farmacia;
     }
 
     public Double getPreco() {

@@ -43,11 +43,13 @@ public class ProdutoActivity extends AppCompatActivity {
         produto.setNome(this.getIntent().getStringExtra("nome"));
         produto.setFabricante(this.getIntent().getStringExtra("fabricante"));
         produto.setDescricao(this.getIntent().getStringExtra("descricao"));
+        produto.setUidproduto(this.getIntent().getStringExtra("uidproduto"));
 
         imageView = findViewById(R.id.imgProduto);
         textNome = findViewById(R.id.txtNome);
         textFabricante = findViewById(R.id.txtFabricante);
         textDescricao = findViewById(R.id.txtDescricao);
+
 
         new Imagem.DownloadImageFromInternet(imageView).execute(produto.getImagem());
         textNome.setText(produto.getNome());
@@ -55,7 +57,7 @@ public class ProdutoActivity extends AppCompatActivity {
         textDescricao.setText(produto.getDescricao());
 
         conectaBanco();
-        //pesquisaPreco();
+        pesquisaPreco();
         listaFarmaPreco(listaPrecos);
 
     }
@@ -67,9 +69,9 @@ public class ProdutoActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
     }
 
-    /*public void pesquisaPreco()
+    public void pesquisaPreco()
     {
-        databaseReference.child("farmaproduto").orderByChild("uidfarmaproduto").equalTo(layoutLinear.toString()).addValueEventListener(new ValueEventListener() {
+        databaseReference.child("farmaproduto").orderByChild("uidproduto").equalTo(produto.getUidproduto()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 listaPrecos.clear();
@@ -77,6 +79,7 @@ public class ProdutoActivity extends AppCompatActivity {
                     FarmaProduto farmaProduto = snapshot.getValue(FarmaProduto.class);
                     listaPrecos.add(farmaProduto);
                 }
+                listaFarmaPreco(listaPrecos);
             }
 
             @Override
@@ -84,7 +87,7 @@ public class ProdutoActivity extends AppCompatActivity {
 
             }
         });
-    }*/
+    }
 
     public void listaFarmaPreco(ArrayList<FarmaProduto> lista)
     {
@@ -94,8 +97,12 @@ public class ProdutoActivity extends AppCompatActivity {
             TextView textViewFarma = new TextView(this);
             TextView textViewPreco = new TextView(this);
 
-            textViewFarma.setText(lista.get(i).getNomefarmacia());
+            textViewFarma.setText(lista.get(i).getFarmacia());
+            textViewFarma.setTypeface(textViewFarma.getTypeface().DEFAULT_BOLD);
+            textViewFarma.setTextSize(16);
+            textViewFarma.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
             textViewPreco.setText(lista.get(i).getPreco().toString());
+            textViewPreco.setTextSize(16);
 
             layoutLinear.addView(textViewFarma);
             layoutLinear.addView(textViewPreco);
