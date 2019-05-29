@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void eventoBanco()
     {
-        databaseReference.child("produto").addValueEventListener(new ValueEventListener()
+        databaseReference.child("produto").orderByChild("nome").addValueEventListener(new ValueEventListener()
         {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
